@@ -12,17 +12,17 @@
 * `RAILS_ENV=production bin/rails server`
 * Open http://localhost:3000
 
-## Specs
+# Specs
 
-### 1. Home
+## 1. Home
 
-* [ ] Arena shows: "Waiting for fighters!..."
+* [x] Arena shows: "Waiting for fighters!..."
 
-#### Tests
+### Tests
 
 * N/A
 
-### 2. Character build
+## 2. Character build
 
 * [ ] ADMIN interface
   + Characters (INDEX/NEW/EDIT/DELETE)
@@ -32,11 +32,11 @@
     - LP + AP <= MAX
 * [ ] Seed 6 characters
 
-#### Tests
+### Tests
 
 * System tests on admin/characters
 
-### 3. Fight
+## 3. Fight
 
 * [ ] Click on one character, its avatar is selected and appears on the left side of the arena
 * [ ] Click on a second character, its avatar is selected and appears on the right side of the arena
@@ -53,22 +53,22 @@
 * [ ] Add victory count next to character
 * [ ] Click on character in Arena to cancel it
 
-#### Tests
+### Tests
 
 * Unit test on Fight
 * System tests on /
 
-### 4. Weapon
+## 4. Weapon
 
 * [ ] Click on first character, go to a new page (/fighters/123/weapons)
 * [ ] Select Weapon, go back to Arena
 * [ ] Weapons add LP/AP bonuses
 
-#### Tests
+### Tests
 
 * System tests on /
 
-## Comments
+# Comments
 
 In order to keep the development under 2 hours
 
