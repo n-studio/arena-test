@@ -1,0 +1,30 @@
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - node_modules/**/*
+    - config/initializers/devise.rb
+    - bin/*
+    - vendor/ruby/**/*
+    
+Metrics/LineLength:
+  Max: 120
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+  Exclude:
+    - 'config/application.rb'
