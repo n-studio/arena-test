@@ -24,13 +24,13 @@
 
 ## 2. Character build
 
-* [ ] ADMIN interface
+* [x] ADMIN interface
   + Characters (INDEX/NEW/EDIT/DELETE)
     - Name
     - LP
     - AP
     - LP + AP <= MAX
-* [ ] Seed 6 characters
+* [x] Seed 6 characters
 
 ### Tests
 

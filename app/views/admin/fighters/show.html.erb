@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<div class="field">
+  <strong>Name:</strong> <%= @fighter.name %>
+</div>
+
+<div class="field">
+  <strong>LP:</strong> <%= @fighter.life_points %>
+</div>
+
+<div class="field">
+  <strong>AP:</strong> <%= @fighter.attack_points %>
+</div>
+
+
+<%= link_to 'Edit', edit_admin_fighter_path(@fighter) %> |
+<%= link_to 'Back', admin_fighters_path %>

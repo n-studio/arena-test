@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Fighters</h1>
+
+<table width="100%">
+  <thead>
+    <tr>
+      <td><strong>Name</strong></td>
+      <td><strong>LP</strong></td>
+      <td><strong>AP</strong></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fighters.each do |fighter| %>
+      <tr>
+        <td><%= link_to fighter.name, admin_fighter_path(fighter) %></td>
+        <td><%= fighter.life_points %></td>
+        <td><%= fighter.attack_points %></td>
+        <td><%= link_to 'Edit', edit_admin_fighter_path(fighter) %></td>
+        <td><%= link_to 'Destroy', admin_fighter_path(fighter), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fighter', new_admin_fighter_path %>

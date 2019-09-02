@@ -1,0 +1,32 @@
+<%= form_with(model: [:admin, fighter], local: true) do |form| %>
+  <% if fighter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fighter.errors.count, "error") %> prohibited this fighter from being saved:</h2>
+
+      <ul>
+        <% fighter.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <div><strong><%= form.label :name %></strong></div>
+    <div><%= form.text_field :name %></div>
+  </div>
+
+  <div class="field">
+    <div><strong><%= form.label :life_points %></strong></div>
+    <div><%= form.number_field :life_points, min: 0, max: 10, step: 1 %></div>
+  </div>
+
+  <div class="field">
+    <div><strong><%= form.label :attack_points %></strong></div>
+    <div><%= form.number_field :attack_points, min: 0, max: 10, step: 1 %></div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

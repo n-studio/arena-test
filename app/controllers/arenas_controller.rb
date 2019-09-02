@@ -1,3 +1,5 @@
 class ArenasController < ApplicationController
-  def index; end
+  def index
+    @fighters = Fighter.all
+  end
 end
