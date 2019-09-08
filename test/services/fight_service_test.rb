@@ -18,5 +18,7 @@ class FightServiceTest < ActiveSupport::TestCase
     assert service.fighters[1].remaining_life_points.negative?, "Fighter 2 shouldn't have remaining life points"
     assert_equal service.fighters[0].id, service.fight.winner.id
     assert_equal service.fighters[1].id, service.fight.loser.id
+    assert_equal "finished", service.fight.state
+    assert_equal Fight.finished.last.id, service.fight.id
   end
 end

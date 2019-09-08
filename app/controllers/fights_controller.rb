@@ -3,6 +3,7 @@ class FightsController < ApplicationController
     @fight = Fight.new
     load_fighters
     @selected_fighters = []
+    load_latest_fights
     render :new
   end
 
@@ -10,6 +11,7 @@ class FightsController < ApplicationController
     @fight = Fight.find(params[:id])
     load_fighters
     load_selected_fighters
+    load_latest_fights
     render :new
   end
 
@@ -55,5 +57,9 @@ class FightsController < ApplicationController
     @selected_fighters = @fight.fighters.to_a
     @fighter1 = @selected_fighters.fetch(0, nil)
     @fighter2 = @selected_fighters.fetch(1, nil)
+  end
+
+  def load_latest_fights
+    @latest_fights = Fight.finished.order("updated_at DESC").first(10)
   end
 end

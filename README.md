@@ -38,18 +38,17 @@
 
 ## 3. Fight
 
-* [ ] Click on one character, its avatar is selected and appears on the left side of the arena
-* [ ] Click on a second character, its avatar is selected and appears on the right side of the arena
-* [ ] A button shows "START" instead of "Waiting for fighters!..." label
-* [ ] Click on "START", I go to a new page.
-* [ ] It's a Janken fight. (/fights/123/steps/1)
+* [x] Click on one character, its avatar is selected and appears on the left side of the arena
+* [x] Click on a second character, its avatar is selected and appears on the right side of the arena
+* [x] A button shows "START" instead of "Waiting for fighters!..." label
+* [x] Click on "START", I go to a new page.
+* [x] It's a Janken fight. (/fights/123/steps/1)
   - A win: B loses A's AP from his LP
   - Draw: B loses A's AP from his LP, A loses B's AP from his LP
   - Use EMOJI ✊✋✌️
-  - Use jQueryUI for DOM animations
   - Click next to go the next step
-* [ ] Show winner (/fights/123/results)
-* [ ] Add last 10 fights results at the bottom of the page (/)
+* [x] Show winner
+* [x] Add last 10 fights results at the bottom of the page (/)
 * [ ] Add victory count next to character
 * [ ] Click on character in Arena to cancel it
 

@@ -33,6 +33,7 @@ class FightService
     end
     @fight.fight_attendances.find_by(fighter_id: winner_id).update_column(:winner, true)
     @fight.fight_attendances.find_by(fighter_id: loser_id).update_column(:loser, true)
+    @fight.update_attribute(:state, "finished")
   end
 
   private
