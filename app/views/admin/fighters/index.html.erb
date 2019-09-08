@@ -16,11 +16,11 @@
   <tbody>
     <% @fighters.each do |fighter| %>
       <tr>
-        <td><%= link_to fighter.name, admin_fighter_path(fighter) %></td>
+        <td><strong><%= fighter.name %></strong></td>
         <td><%= fighter.life_points %></td>
         <td><%= fighter.attack_points %></td>
-        <td><%= link_to 'Edit', edit_admin_fighter_path(fighter) %></td>
-        <td><%= link_to 'Destroy', admin_fighter_path(fighter), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_admin_fighter_path(fighter), class: "nes-btn" %></td>
+        <td><%= link_to 'Destroy', admin_fighter_path(fighter), method: :delete, data: { confirm: 'Are you sure?' }, class: "nes-btn is-error" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,6 @@
 
 <br>
 
-<%= link_to 'New Fighter', new_admin_fighter_path %>
+<%= link_to 'New Fighter', new_admin_fighter_path, class: "nes-btn" %>
+-
+<%= link_to 'Back to arena', root_path, class: "nes-btn" %>

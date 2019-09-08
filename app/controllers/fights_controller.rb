@@ -2,6 +2,7 @@ class FightsController < ApplicationController
   def index
     @fight = Fight.new
     load_fighters
+    @selected_fighters = []
     render :new
   end
 
@@ -31,6 +32,13 @@ class FightsController < ApplicationController
     end
   end
 
+  def destroy
+    @fight = Fight.find(params[:id])
+    @fight.destroy if @fight.fight_steps.count.zero?
+
+    redirect_to root_url
+  end
+
   private
 
   def add_fighter
@@ -44,8 +52,8 @@ class FightsController < ApplicationController
   end
 
   def load_selected_fighters
-    fighters = @fight.fighters.to_a
-    @fighter1 = fighters.fetch(0, nil)
-    @fighter2 = fighters.fetch(1, nil)
+    @selected_fighters = @fight.fighters.to_a
+    @fighter1 = @selected_fighters.fetch(0, nil)
+    @fighter2 = @selected_fighters.fetch(1, nil)
   end
 end

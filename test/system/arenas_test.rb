@@ -4,6 +4,6 @@ class ArenasTest < ApplicationSystemTestCase
   test "visiting the index" do
     visit root_url
 
-    assert_selector "h1", text: "Waiting for fighters"
+    assert_selector "h3", text: "Waiting for fighters"
   end
 end

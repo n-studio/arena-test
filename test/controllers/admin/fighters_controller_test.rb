@@ -22,12 +22,7 @@ class Admin::FightersControllerTest < ActionDispatch::IntegrationTest
       }
     end
 
-    assert_redirected_to admin_fighter_url(Fighter.last)
-  end
-
-  test "should show fighter" do
-    get admin_fighter_url(@fighter)
-    assert_response :success
+    assert_redirected_to admin_fighters_url
   end
 
   test "should get edit" do
@@ -39,7 +34,7 @@ class Admin::FightersControllerTest < ActionDispatch::IntegrationTest
     patch admin_fighter_url(@fighter), params: {
       fighter: { name: "New fighter name", life_points: 2, attack_points: 8 }
     }
-    assert_redirected_to admin_fighter_url(@fighter)
+    assert_redirected_to admin_fighters_url
   end
 
   test "should destroy fighter" do

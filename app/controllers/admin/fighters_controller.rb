@@ -26,8 +26,8 @@ class Admin::FightersController < ApplicationController
 
     respond_to do |format|
       if @fighter.save
-        format.html { redirect_to admin_fighter_path(@fighter), notice: 'Fighter was successfully created.' }
-        format.json { render :show, status: :created, location: admin_fighter_path(@fighter) }
+        format.html { redirect_to admin_fighters_path, notice: 'Fighter was successfully created.' }
+        format.json { head :ok }
       else
         format.html { render :new }
         format.json { render json: @fighter.errors, status: :unprocessable_entity }
@@ -40,8 +40,8 @@ class Admin::FightersController < ApplicationController
   def update
     respond_to do |format|
       if @fighter.update(fighter_params)
-        format.html { redirect_to admin_fighter_path(@fighter), notice: 'Fighter was successfully updated.' }
-        format.json { render :show, status: :ok, location: admin_fighter_path(@fighter) }
+        format.html { redirect_to admin_fighters_path, notice: 'Fighter was successfully updated.' }
+        format.json { head :ok }
       else
         format.html { render :edit }
         format.json { render json: @fighter.errors, status: :unprocessable_entity }
