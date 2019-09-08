@@ -27,6 +27,6 @@
   <% if @is_last_step %>
     <div><%= link_to "Back to arena", root_path, class: "nes-btn" %></div>
   <% else %>
-    <div><%= link_to "Next", fight_step_path(@fight.id, params[:id].to_i + 1), class: "nes-btn is-primary" %></div>
+    <div><%= link_to "Next", fight_step_path(@fight.id, params[:id].to_i + 1), class: "nes-btn is-primary next" %></div>
   <% end %>
 </div>
