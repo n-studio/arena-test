@@ -1,4 +1,5 @@
-<%= form_with(model: [:admin, fighter], local: true) do |form| %>
+<%= form_with(model: [:admin, fighter], local: true, class: "nes-container with-title") do |form| %>
+  <h3 class="title">Fighter</h3>
   <% if fighter.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(fighter.errors.count, "error") %> prohibited this fighter from being saved:</h2>
@@ -11,22 +12,22 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <div><strong><%= form.label :name %></strong></div>
-    <div><%= form.text_field :name %></div>
+  <div class="nes-field">
+    <strong><%= form.label :name %></strong>
+    <%= form.text_field :name, class: "nes-input" %>
   </div>
 
-  <div class="field">
-    <div><strong><%= form.label :life_points %></strong></div>
-    <div><%= form.number_field :life_points, min: 0, max: 10, step: 1 %></div>
+  <div class="nes-field">
+    <strong><%= form.label :life_points %></strong>
+    <%= form.number_field :life_points, min: 0, max: 10, step: 1, class: "nes-input" %>
   </div>
 
-  <div class="field">
-    <div><strong><%= form.label :attack_points %></strong></div>
-    <div><%= form.number_field :attack_points, min: 0, max: 10, step: 1 %></div>
+  <div class="nes-field">
+    <strong><%= form.label :attack_points %></strong>
+    <%= form.number_field :attack_points, min: 0, max: 10, step: 1, class: "nes-input" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="nes-field actions">
+    <%= form.submit class: "nes-btn is-primary" %>
   </div>
 <% end %>

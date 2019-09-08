@@ -1,20 +1,26 @@
-<% if @fight.fighters.count < 2 %>
-<h1>Waiting for fighters!...</h1>
-<% end %>
+<section class="nes-container with-title align-center">
+  <h3 class="title">Waiting for fighters!...</h3>
+  <h2>Choose your fighters!</h2>
 
-<% if @fighter1 %>
-  <%= image_tag image_url(@fighter1.image), size: "100x100", class: "fighter-icon" %>
-<% end %>
+  <div class="versus">
+    <%= image_tag @fighter1 ? image_url(@fighter1.image) : blank_image, size: "100x100", class: "nes-avatar is-bordered is-large" %>
+    VS
+    <%= image_tag @fighter2 ? image_url(@fighter2.image) : blank_image, size: "100x100", class: "nes-avatar is-bordered is-large" %>
+  </div>
 
-<% if @fighter2 %>
-  <%= image_tag image_url(@fighter2.image), size: "100x100", class: "fighter-icon" %>
-<% end %>
+  <div>
+    <% if @selected_fighters.size > 0 %>
+      <%= link_to "Cancel", fight_path(@fight), method: "delete", class: "nes-btn" %>
+    <% end %>
+    <% if @selected_fighters.size == 2 && !@fight.fighters.include?(nil) %>
+      <%= link_to "Start", fight_path(@fight, start: "true"), method: "patch", class: "nes-btn is-error" %>
+    <% end %>
+  </div>
+</section>
 
-<% if @fight.fighters.count == 2 && !@fight.fighters.include?(nil) %>
-  <%= link_to "Start", fight_path(@fight, start: "true"), method: "patch" %>
-<% end %>
-
-<h2>Choose fighters</h2>
-<div>
-  <%= render partial: "fighter", collection: @fighters %>
-</div>
+<section class="nes-container with-title">
+  <h3 class="title">Fighters <%= link_to "(Edit)", admin_fighters_path %></h3>
+  <div class="flex-container">
+    <%= render partial: "fighter", collection: @fighters %>
+  </div>
+</section>

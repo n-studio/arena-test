@@ -1,3 +1,44 @@
-.fighter-icon {
-  border-radius: 50%;
+@import 'nes.css/css/nes.min';
+body {
+  padding: 40px;
+}
+
+.nes-container {
+  margin-bottom: 40px;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.fighter-button {
+  text-align: center;
+}
+
+img {
+  image-rendering: pixelated;
+}
+
+.nes-avatar.is-large {
+  display: inline-block;
+  width: 128px;
+  height: 128px;
+  &.is-bordered {
+    border: 4px solid black;
+    margin: 4px;
+  }
+}
+
+.versus {
+  margin-bottom: 10px;
+}
+
+.nes-field {
+  margin-bottom: 40px;
 }
