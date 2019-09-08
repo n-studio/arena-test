@@ -52,13 +52,14 @@ class FightService
     fighter1_damage_points = @fighters[0] == winner || winner.nil? ? 0 : @fighters[1].attack_points
     fighter2_damage_points = @fighters[1] == winner || winner.nil? ? 0 : @fighters[0].attack_points
 
-    update_life_points(fighter1_damage_points, fighter2_damage_points)
-
     FightStep.create(
       fight: @fight,
       hands: [fighter1_hand, fighter2_hand].join(","),
-      damage_points: [fighter1_damage_points, fighter2_damage_points].join(",")
+      damage_points: [fighter1_damage_points, fighter2_damage_points].join(","),
+      remaining_life_points: [@fighters[0].remaining_life_points, @fighters[1].remaining_life_points].join(",")
     )
+
+    update_life_points(fighter1_damage_points, fighter2_damage_points)
   end
 
   def update_life_points(*damage_points)

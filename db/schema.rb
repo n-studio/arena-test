@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_03_210733) do
+ActiveRecord::Schema.define(version: 2019_09_08_140739) do
 
   create_table "fight_attendances", force: :cascade do |t|
     t.integer "fight_id"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2019_09_03_210733) do
     t.string "damage_points", default: "0,0"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "remaining_life_points"
     t.index ["fight_id"], name: "index_fight_steps_on_fight_id"
   end
 
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 2019_09_03_210733) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "fight_steps_count", default: 0
+    t.integer "exp_points", default: 0
   end
 
   add_foreign_key "fight_steps", "fights"

@@ -1,0 +1,24 @@
+<h1>Step <%= params[:id] %></h1>
+
+<div>
+  <%= @fighters[0].name %>
+  <%= @hands[0] %> (<%= -@damage_points[0] %>) (<%= [@remaining_life_points[0] - @damage_points[0], 0].max %>)
+  VS
+  <%= @fighters[1].name %>
+  <%= @hands[1] %> (<%= -@damage_points[1] %>) (<%= [@remaining_life_points[1] - @damage_points[1], 0].max %>)
+</div>
+
+<% if @is_last_step %>
+  <p>
+    <%= @winner.name %> won!
+  </p>
+  <p>
+    <%= @winner.name %> earned <%= @fight.exp_points %> XP.
+  </p>
+<% end %>
+
+<% if @is_last_step %>
+  <div><%= link_to "Back", root_path %></div>
+<% else %>
+  <div><%= link_to "Next", fight_step_path(@fight.id, params[:id].to_i + 1) %></div>
+<% end %>
