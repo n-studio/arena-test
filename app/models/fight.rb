@@ -3,6 +3,8 @@ class Fight < ApplicationRecord
   has_many :fighters, through: :fight_attendances
   has_many :fight_steps, dependent: :nullify
 
+  before_create :set_exp_points
+
   FIGHTERS_COUNT_MAX = 2
 
   def add_fighter(fighter)
@@ -12,10 +14,16 @@ class Fight < ApplicationRecord
   end
 
   def winner
-    fight_attendances.find_by(winner: true)&.fighter
+    @winner ||= fight_attendances.find_by(winner: true)&.fighter
   end
 
   def loser
-    fight_attendances.find_by(loser: true)&.fighter
+    @loser ||= fight_attendances.find_by(loser: true)&.fighter
+  end
+
+  private
+
+  def set_exp_points
+    self.exp_points = 100
   end
 end

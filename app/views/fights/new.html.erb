@@ -1,0 +1,20 @@
+<% if @fight.fighters.count < 2 %>
+<h1>Waiting for fighters!...</h1>
+<% end %>
+
+<% if @fighter1 %>
+  <%= image_tag image_url(@fighter1.image), size: "100x100", class: "fighter-icon" %>
+<% end %>
+
+<% if @fighter2 %>
+  <%= image_tag image_url(@fighter2.image), size: "100x100", class: "fighter-icon" %>
+<% end %>
+
+<% if @fight.fighters.count == 2 && !@fight.fighters.include?(nil) %>
+  <%= link_to "Start", fight_path(@fight, start: "true"), method: "patch" %>
+<% end %>
+
+<h2>Choose fighters</h2>
+<div>
+  <%= render partial: "fighter", collection: @fighters %>
+</div>
