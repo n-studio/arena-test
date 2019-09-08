@@ -15,6 +15,7 @@ body {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .fighter-button {
@@ -41,4 +42,8 @@ img {
 
 .nes-field {
   margin-bottom: 40px;
+}
+
+.hand {
+  font-size: 64px;
 }
