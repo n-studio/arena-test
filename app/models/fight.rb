@@ -1,9 +1,11 @@
 class Fight < ApplicationRecord
   has_many :fight_attendances, dependent: :destroy
   has_many :fighters, through: :fight_attendances
-  has_many :fight_steps, dependent: :nullify
+  has_many :fight_steps, dependent: :destroy
 
   before_create :set_exp_points
+
+  scope :finished, -> { where(state: "finished") }
 
   FIGHTERS_COUNT_MAX = 2
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_08_140739) do
+ActiveRecord::Schema.define(version: 2019_09_08_173733) do
 
   create_table "fight_attendances", force: :cascade do |t|
     t.integer "fight_id"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2019_09_08_140739) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "fight_steps_count", default: 0
     t.integer "exp_points", default: 0
+    t.string "state", default: "initiated"
   end
 
   add_foreign_key "fight_steps", "fights"

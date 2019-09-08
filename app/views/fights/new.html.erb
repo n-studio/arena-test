@@ -18,9 +18,6 @@
   </div>
 </section>
 
-<section class="nes-container with-title">
-  <h3 class="title">Fighters <%= link_to "(Edit)", admin_fighters_path %></h3>
-  <div class="flex-container">
-    <%= render partial: "fighter", collection: @fighters %>
-  </div>
-</section>
+<%= render partial: "fighters", locals: { fighters: @fighters } %>
+
+<%= render partial: "latest_fights_results", locals: { fights: @latest_fights } %>
