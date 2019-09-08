@@ -71,5 +71,5 @@
 
 In order to keep the development under 2 hours
 
-* no Javascript (except basic jQueryUI) will be used.
+* no Javascript will be used.
 * no File upload
