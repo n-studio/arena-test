@@ -23,17 +23,19 @@ class FightService
 
   def finish
     if @fighters[0].remaining_life_points.positive? && @fighters[1].remaining_life_points <= 0
-      winner_id = @fighters[0]
-      loser_id = @fighters[1]
+      winner_index = 0
+      loser_index = 1
     elsif @fighters[1].remaining_life_points.positive? && @fighters[0].remaining_life_points <= 0
-      winner_id = @fighters[1]
-      loser_id = @fighters[0]
+      winner_index = 1
+      loser_index = 0
     else
       return
     end
-    @fight.fight_attendances.find_by(fighter_id: winner_id).update_column(:winner, true)
-    @fight.fight_attendances.find_by(fighter_id: loser_id).update_column(:loser, true)
+    @fight.fight_attendances.find_by(fighter_id: @fighters[winner_index]).update_column(:winner, true)
+    @fight.fight_attendances.find_by(fighter_id: @fighters[loser_index]).update_column(:loser, true)
     @fight.update_attribute(:state, "finished")
+    @fighters[winner_index].increment!(:wins_count)
+    @fighters[loser_index].increment!(:losses_count)
   end
 
   private

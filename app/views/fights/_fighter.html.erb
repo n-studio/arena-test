@@ -1,10 +1,13 @@
-<div class="fighter-button">
+<div class="fighter__button">
   <%= link_to @fight.new_record? ? fights_path(fighter_id: fighter.id) : fight_path(@fight, fighter_id: fighter.id), method: @fight.new_record? ? "post" : "patch" do %>
     <%= image_tag fighter.image ? image_url(fighter.image) : blank_image, size: "100x100", class: "nes-avatar is-bordered is-large pick-fighter fighter-#{fighter.id}" %>
   <% end %>
   <div>
-    LP: <%= fighter.life_points %>
-    <br>
-    AP: <%= fighter.attack_points %>
+    <ul class="fighter__stats">
+      <li>
+        <span class="nes-text is-primary">W:<%= fighter.wins_count %></span>/<span class="nes-text is-error">L:<%= fighter.losses_count %></span></li>
+      <li>LP: <%= fighter.life_points %></li>
+      <li>AP: <%= fighter.attack_points %></li>
+    </ul>
   </div>
 </div>
