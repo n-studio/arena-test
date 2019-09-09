@@ -4,6 +4,7 @@
 
 * `echo '573438d197bb839f69decf12fd8d55f3' > config/master.key`
 * Configure `config/database.yml`
+* `bundle && yarn`
 * `RAILS_ENV=production bin/rails db:create; RAILS_ENV=production bin/rails db:migrate; RAILS_ENV=production bin/rails db:seed`
 * `RAILS_ENV=production bin/rails assets:precompile`
 
@@ -12,7 +13,11 @@
 * `RAILS_ENV=production bin/rails server`
 * Open http://localhost:3000
 
-# Specs
+# Tests
+
+* `bin/rails test`
+* `bin/rails test:system`
+* `bundle exec rubocop`
 
 ## 1. Home
 
