@@ -5,6 +5,5 @@ class FightStepsController < ApplicationController
     steps = @fight.fight_steps
     @step = steps[params[:id].to_i - 1].decorate
     @is_last_step = steps.size == params[:id].to_i
-    return unless @is_last_step
   end
 end

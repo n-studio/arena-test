@@ -1,6 +1,10 @@
 <section class="nes-container with-title">
   <h3 class="title">Latest fights</h3>
   <% @latest_fights.each do |fight| %>
-    <p><%= fight.updated_at.to_date.to_s(:medium) %> - <%= fight.winner&.name %> won against <%= fight.loser&.name %>!</p>
+    <% if fight.winner %>
+      <p><%= fight.updated_at.to_date.to_s(:medium) %> - <%= fight.winner&.name %> won against <%= fight.loser&.name %>!</p>
+    <% else %>
+      <p><%= fight.updated_at.to_date.to_s(:medium) %> - <%= fight.fighters.map(&:name).join(' and ') %> battled but it was a draw!</p>
+    <% end %>
   <% end %>
 </section>

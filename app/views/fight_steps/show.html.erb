@@ -1,6 +1,6 @@
 <section class="nes-container with-title align-center">
   <h3 class="title">Step <%= params[:id] %></h3>
-  <div class="flex-container">
+  <div class="flex-container fight-step__description">
     <div>
       <%= render partial: "action", locals: { fighter: @fighters[0],
                                               hand: @step.hands[0],
@@ -29,7 +29,13 @@
   </div>
 
   <% if @is_last_step %>
-    <%= render partial: "result", locals: { winner: @fight.winner } %>
+    <div class="fight-step__result">
+      <% if @fight.winner %>
+        <%= render partial: "winner", locals: { winner: @fight.winner } %>
+      <% else %>
+        <%= render partial: "draw" %>
+      <% end %>
+    </div>
   <% end %>
 
   <% if @is_last_step %>

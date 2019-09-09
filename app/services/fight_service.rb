@@ -1,5 +1,8 @@
 class FightService
-  MAX_STEPS_COUNT = 20
+  POINTS_LIMIT = ENV.fetch('POINTS_LIMIT', 10)
+  LIFE_POINTS_FACTOR = ENV.fetch('LIFE_POINTS_FACTOR', 10)
+  MAX_STEPS_COUNT = ENV.fetch('MAX_STEPS_COUNT', 20)
+  FIGHTERS_COUNT_MAX = ENV.fetch('FIGHTERS_COUNT_MAX', 2)
 
   attr_reader :fight, :fighters
 
@@ -22,6 +25,8 @@ class FightService
   end
 
   def finish
+    @fight.update_attribute(:state, "finished")
+
     if @fighters[0].remaining_life_points.positive? && @fighters[1].remaining_life_points <= 0
       winner_index = 0
       loser_index = 1
@@ -33,7 +38,6 @@ class FightService
     end
     @fight.fight_attendances.find_by(fighter_id: @fighters[winner_index]).update_column(:winner, true)
     @fight.fight_attendances.find_by(fighter_id: @fighters[loser_index]).update_column(:loser, true)
-    @fight.update_attribute(:state, "finished")
     @fighters[winner_index].increment!(:wins_count)
     @fighters[loser_index].increment!(:losses_count)
   end
