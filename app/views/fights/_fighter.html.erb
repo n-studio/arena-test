@@ -1,17 +1,20 @@
 <div class="fighter-button">
   <% if fighter %>
     <%= link_to_fighter_action fight, fighter, action do %>
-      <%= image_tag fighter.image ? image_url(fighter.image) : blank_image, size: "100x100", class: "nes-avatar is-bordered is-large pick-fighter fighter-#{fighter.id}" %>
+      <%= image_tag_or_blank fighter.image, size: "100x100", class: "nes-avatar is-bordered is-large pick-fighter fighter-#{fighter.id}" %>
     <% end %>
     <div>
       <ul class="fighter-button__stats">
         <li>
-          <span class="nes-text is-primary">W:<%= fighter.wins_count %></span>/<span class="nes-text is-error">L:<%= fighter.losses_count %></span></li>
+          <span class="nes-text is-primary">W:<%= fighter.wins_count %></span><!--
+          -->/<!--
+          --><span class="nes-text is-error">L:<%= fighter.losses_count %></span>
+        </li>
         <li>LP: <%= fighter.life_points %></li>
         <li>AP: <%= fighter.attack_points %></li>
       </ul>
     </div>
   <% else %>
-  <%= image_tag blank_image, size: "100x100", class: "nes-avatar is-bordered is-large pick-fighter" %>
+    <%= image_tag blank_image, size: "100x100", class: "nes-avatar is-bordered is-large pick-fighter" %>
   <% end %>
 </div>
