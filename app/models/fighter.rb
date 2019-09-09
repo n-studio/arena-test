@@ -1,5 +1,6 @@
 class Fighter < ApplicationRecord
   POINTS_LIMIT = 10
+  LIFE_POINTS_FACTOR = 10
 
   has_many :fight_attendances
   has_many :fighters, through: :fight_attendances
@@ -16,6 +17,6 @@ class Fighter < ApplicationRecord
   end
 
   def init_stats
-    @remaining_life_points = life_points
+    @remaining_life_points = (life_points * LIFE_POINTS_FACTOR).round
   end
 end
