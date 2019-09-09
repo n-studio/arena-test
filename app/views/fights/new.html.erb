@@ -2,10 +2,12 @@
   <h3 class="title">Waiting for fighters!...</h3>
   <h2>Choose your fighters!</h2>
 
-  <div class="fight__versus">
-    <%= image_tag @fighter1 ? image_url(@fighter1.image) : blank_image, size: "100x100", class: "nes-avatar is-bordered is-large" %>
-    VS
-    <%= image_tag @fighter2 ? image_url(@fighter2.image) : blank_image, size: "100x100", class: "nes-avatar is-bordered is-large" %>
+  <div class="flex-container center top fight__versus">
+    <%= render partial: "fighter", locals: { fight: @fight, fighter: @fighter1, action: :remove_fighter } %>
+    <div class="vs">
+      VS
+    </div>
+    <%= render partial: "fighter", locals: { fight: @fight, fighter: @fighter2, action: :remove_fighter } %>
   </div>
 
   <div>
@@ -18,6 +20,6 @@
   </div>
 </section>
 
-<%= render partial: "fighters", locals: { fighters: @fighters } %>
+<%= render partial: "fighters", locals: { fight: @fight, fighters: @fighters } %>
 
 <%= render partial: "latest_fights_results", locals: { fights: @latest_fights } %>

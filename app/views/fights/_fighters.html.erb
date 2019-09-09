@@ -1,6 +1,6 @@
 <section class="nes-container with-title">
   <h3 class="title">Fighters <%= link_to "(Edit)", admin_fighters_path %></h3>
   <div class="flex-container space-between">
-    <%= render partial: "fighter", collection: fighters %>
+    <%= render partial: "fighter", collection: fighters, locals: { fight: fight, action: :add_fighter } %>
   </div>
 </section>
