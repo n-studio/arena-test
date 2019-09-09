@@ -9,7 +9,15 @@
                                               position: :left } %>
     </div>
     <div>
-      VS
+      <p>
+        <% if @step.damage_points == [0, 0] %>
+          DRAW
+        <% elsif @step.damage_points[1].positive? %>
+          ATTACK -&gt;
+        <% else %>
+          &lt;- ATTACK
+        <% end %>
+      </p>
     </div>
     <div>
       <%= render partial: "action", locals: { fighter: @fighters[1],
