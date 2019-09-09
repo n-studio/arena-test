@@ -12,4 +12,8 @@ module ApplicationHelper
       capture(&block)
     end
   end
+
+  def image_tag_or_blank(source, options = {})
+    image_tag source ? image_url(source) : blank_image, options
+  end
 end

@@ -1,16 +1,11 @@
 <% if position == :right %>
   <span class="fight-step__hand"><%= hand %></span>
 <% end %>
-<%= image_tag fighter.image ? image_url(fighter.image) : blank_image, size: "100x100", class: "nes-avatar is-bordered is-large" %>
+<%= image_tag_or_blank fighter.image, size: "100x100", class: "nes-avatar is-bordered is-large" %>
 <% if position == :left %>
   <span class="fight-step__hand"><%= hand %></span>
 <% end %>
 <div>
-  <%= fighter.name %><br>
-  <% if damage_points > 0 %>
-    loses <%= damage_points %> points!
-  <% else %>
-    attacks!
-  <% end %>
+  <%= damage_description(fighter, damage_points) %>
 </div>
 Remaining life: <%= [remaining_life_points - damage_points, 0].max %>

@@ -2,29 +2,15 @@
   <h3 class="title">Step <%= params[:id] %></h3>
   <div class="flex-container space-between fight-step__description">
     <div>
-      <%= render partial: "action", locals: { fighter: @fighters[0],
-                                              hand: @step.hands[0],
-                                              damage_points: @step.damage_points[0],
-                                              remaining_life_points: @step.remaining_life_points[0],
-                                              position: :left } %>
+      <%= render_action fighters: @fighters, step: @step, fighter_index: 0, position: :left %>
     </div>
     <div>
       <p>
-        <% if @step.damage_points == [0, 0] %>
-          DRAW
-        <% elsif @step.damage_points[1].positive? %>
-          ATTACK -&gt;
-        <% else %>
-          &lt;- ATTACK
-        <% end %>
+        <%= attack_description(@step.damage_points) %>
       </p>
     </div>
     <div>
-      <%= render partial: "action", locals: { fighter: @fighters[1],
-                                              hand: @step.hands[1],
-                                              damage_points: @step.damage_points[1],
-                                              remaining_life_points: @step.remaining_life_points[1],
-                                              position: :right } %>
+      <%= render_action fighters: @fighters, step: @step, fighter_index: 1, position: :right %>
     </div>
   </div>
 
