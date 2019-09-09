@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'fighters#index'
     resources :fighters, except: :show
+    get 'fighters/:id', to: redirect('/admin/fighters/%{id}/edit')
   end
 end
