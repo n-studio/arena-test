@@ -3,21 +3,22 @@
 ## Setup
 
 * `echo '573438d197bb839f69decf12fd8d55f3' > config/master.key`
-* Configure `config/database.yml`
 * `bundle && yarn`
 * `RAILS_ENV=production bin/rails db:create; RAILS_ENV=production bin/rails db:migrate; RAILS_ENV=production bin/rails db:seed`
 * `RAILS_ENV=production bin/rails assets:precompile`
 
 ## Run
 
-* `RAILS_ENV=production bin/rails server`
+* `RAILS_ENV=production RAILS_SERVE_STATIC_FILES=true bin/rails server`
 * Open http://localhost:3000
 
-# Tests
+## Test suite
 
 * `bin/rails test`
 * `bin/rails test:system`
 * `bundle exec rubocop`
+
+# Specs
 
 ## 1. Home
 
