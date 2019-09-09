@@ -1,10 +1,13 @@
 @import 'nes.css/css/nes.min';
+
+// Global
+
 body {
   padding: 40px;
 }
 
-.nes-container {
-  margin-bottom: 40px;
+img {
+  image-rendering: pixelated;
 }
 
 .align-center {
@@ -13,31 +16,18 @@ body {
 
 .flex-container {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
+
+  &.space-between {
+    justify-content: space-between;
+  }
 }
 
-.fighter__button {
-  text-align: center;
-}
+// Layout
 
-.fighter__stats {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.fight-step__description {
+.nes-container {
   margin-bottom: 40px;
-}
-
-.fight-step__result {
-  margin-bottom: 40px;
-}
-
-img {
-  image-rendering: pixelated;
 }
 
 .nes-avatar.is-large {
@@ -50,14 +40,36 @@ img {
   }
 }
 
-.versus {
-  margin-bottom: 10px;
-}
-
 .nes-field {
   margin-bottom: 40px;
 }
 
-.hand {
-  font-size: 64px;
+.fight {
+  .fight__versus {
+    margin-bottom: 10px;
+  }
+}
+
+.fighter-button {
+  text-align: center;
+
+  .fighter-button__stats {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.fight-step {
+  .fight-step__description {
+    margin-bottom: 40px;
+  }
+  
+  .fight-step__result {
+    margin-bottom: 40px;
+  }
+
+  .fight-step__hand {
+    font-size: 64px;
+  }
 }

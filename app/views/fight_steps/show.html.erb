@@ -1,6 +1,6 @@
-<section class="nes-container with-title align-center">
+<section class="nes-container with-title align-center fight-step">
   <h3 class="title">Step <%= params[:id] %></h3>
-  <div class="flex-container fight-step__description">
+  <div class="flex-container space-between fight-step__description">
     <div>
       <%= render partial: "action", locals: { fighter: @fighters[0],
                                               hand: @step.hands[0],
