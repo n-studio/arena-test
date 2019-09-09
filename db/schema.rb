@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_08_173733) do
+ActiveRecord::Schema.define(version: 2019_09_09_001522) do
 
   create_table "fight_attendances", force: :cascade do |t|
     t.integer "fight_id"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 2019_09_08_173733) do
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "wins_count", default: 0
+    t.integer "losses_count", default: 0
   end
 
   create_table "fights", force: :cascade do |t|

@@ -49,7 +49,7 @@
   - Click next to go the next step
 * [x] Show winner
 * [x] Add last 10 fights results at the bottom of the page (/)
-* [ ] Add victory count next to character
+* [x] Add victory count next to character
 * [ ] Click on character in Arena to cancel it
 
 ### Tests

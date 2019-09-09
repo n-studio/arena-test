@@ -12,7 +12,11 @@ class FightServiceTest < ActiveSupport::TestCase
     service.fighters[1].attack_points = 0
 
     assert_changes "FightStep.count" do
-      service.start
+      assert_difference -> { service.fighters[0].wins_count } do
+        assert_difference -> { service.fighters[1].losses_count } do
+          service.start
+        end
+      end
     end
 
     assert service.fighters[1].remaining_life_points.negative?, "Fighter 2 shouldn't have remaining life points"
