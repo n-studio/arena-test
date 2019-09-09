@@ -1,9 +1,9 @@
 <% if position == :right %>
-  <span class="hand"><%= hand %></span>
+  <span class="fight-step__hand"><%= hand %></span>
 <% end %>
 <%= image_tag fighter.image ? image_url(fighter.image) : blank_image, size: "100x100", class: "nes-avatar is-bordered is-large" %>
 <% if position == :left %>
-  <span class="hand"><%= hand %></span>
+  <span class="fight-step__hand"><%= hand %></span>
 <% end %>
 <div>
   <%= fighter.name %><br>
