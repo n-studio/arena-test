@@ -68,6 +68,9 @@ class FightsController < ApplicationController
   end
 
   def load_latest_fights
-    @latest_fights = Fight.finished.order("updated_at DESC").first(10)
+    @latest_fights = Fight.includes(:fight_attendances, :fighters)
+                          .finished
+                          .order("updated_at DESC")
+                          .first(10)
   end
 end

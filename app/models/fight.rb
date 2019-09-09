@@ -17,11 +17,19 @@ class Fight < ApplicationRecord
     end
 
     def winner
-      @winner ||= fight_attendances.find_by(winner: true)&.fighter
+      @winner ||= fighter_by_status(:winner)
     end
 
     def loser
-      @loser ||= fight_attendances.find_by(loser: true)&.fighter
+      @loser ||= fighter_by_status(:loser)
+    end
+
+    def fighter_by_status(status)
+      if fight_attendances.loaded?
+        fight_attendances.to_a.select(&status.to_sym).first&.fighter
+      else
+        fight_attendances.find_by(status => true)&.fighter
+      end
     end
 
     private
