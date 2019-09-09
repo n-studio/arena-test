@@ -1,22 +1,24 @@
 class Fighter < ApplicationRecord
-  POINTS_LIMIT = 10
-  LIFE_POINTS_FACTOR = 10
-
   has_many :fight_attendances
   has_many :fighters, through: :fight_attendances
-  attr_accessor :remaining_life_points
 
-  validate :points_limit
-  validates :life_points, :attack_points, numericality: { greater_than: 0 }
-  validates :name, :life_points, :attack_points, presence: true
+  concerning :FightService do
+    included do
+      attr_accessor :remaining_life_points
 
-  def points_limit
-    return if life_points + attack_points <= POINTS_LIMIT
+      validate :points_limit
+      validates :life_points, :attack_points, numericality: { greater_than: 0 }
+      validates :name, :life_points, :attack_points, presence: true
+    end
 
-    errors.add(:base, "points cannot exceed the limit of #{POINTS_LIMIT}")
-  end
+    def points_limit
+      return if life_points + attack_points <= ::FightService::POINTS_LIMIT
 
-  def init_stats
-    @remaining_life_points = (life_points * LIFE_POINTS_FACTOR).round
+      errors.add(:base, "points cannot exceed the limit of #{::FightService::POINTS_LIMIT}")
+    end
+
+    def init_stats
+      @remaining_life_points = (life_points * ::FightService::LIFE_POINTS_FACTOR).round
+    end
   end
 end

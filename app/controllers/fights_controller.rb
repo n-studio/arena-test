@@ -4,6 +4,7 @@ class FightsController < ApplicationController
     load_fighters
     @selected_fighters = []
     load_latest_fights
+
     render :new
   end
 
@@ -12,41 +13,48 @@ class FightsController < ApplicationController
     load_fighters
     load_selected_fighters
     load_latest_fights
+
     render :new
   end
 
   def create
     @fight = params[:id] ? Fight.find(params[:id]) : Fight.new
-    add_fighter
+    add_fighter!
+    @fight.save!
+
     redirect_to fight_url(@fight)
   end
 
   def update
     @fight = Fight.find(params[:id])
-
     if params[:fighter_id]
-      add_fighter
+      add_fighter!
+
       redirect_to fight_url(@fight)
     elsif params[:start] == "true"
-      service = FightService.new(fight: @fight)
-      service.start
-      redirect_to fight_step_url(@fight, 1)
+      start
     end
+  end
+
+  def start
+    service = FightService.new(fight: @fight)
+    service.start
+
+    redirect_to fight_step_url(@fight, 1)
   end
 
   def destroy
     @fight = Fight.find(params[:id])
-    @fight.destroy if @fight.fight_steps.count.zero?
+    @fight.destroy! if @fight.fight_steps.count.zero?
 
     redirect_to root_url
   end
 
   private
 
-  def add_fighter
+  def add_fighter!
     fighter = Fighter.find(params[:fighter_id])
     @fight.add_fighter(fighter)
-    @fight.save
   end
 
   def load_fighters
