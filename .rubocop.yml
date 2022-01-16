@@ -1,12 +1,14 @@
 AllCops:
+  NewCops: enable
+  SuggestExtensions: false
   Exclude:
     - db/schema.rb
     - node_modules/**/*
     - config/initializers/devise.rb
     - bin/*
     - vendor/ruby/**/*
-    
-Metrics/LineLength:
+
+Layout/LineLength:
   Max: 120
 
 Style/FrozenStringLiteralComment:
@@ -14,6 +16,10 @@ Style/FrozenStringLiteralComment:
 
 Style/Documentation:
   Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/**/*'
 
 Metrics/MethodLength:
   Enabled: false
